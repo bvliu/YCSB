@@ -127,6 +127,7 @@ public class DynamoDBClient extends DB {
       AWSCredentials credentials = new PropertiesCredentials(new File(credentialsFile));
       ClientConfiguration cconfig = new ClientConfiguration();
       cconfig.setMaxConnections(maxConnects);
+      cconfig.setMaxErrorRetry(0);
       dynamoDB = new AmazonDynamoDBClient(credentials, cconfig);
       dynamoDB.setEndpoint(this.endpoint);
       primaryKeyName = primaryKey;
