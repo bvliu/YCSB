@@ -18,6 +18,7 @@ package site.ycsb.db;
 
 import com.amazonaws.AmazonClientException;
 import com.amazonaws.AmazonServiceException;
+import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughputExceededException;
 import com.amazonaws.ClientConfiguration;
 import com.amazonaws.auth.AWSCredentials;
 import com.amazonaws.auth.PropertiesCredentials;
@@ -150,6 +151,8 @@ public class DynamoDBClient extends DB {
 
     try {
       res = dynamoDB.getItem(req);
+    } catch (ProvisionedThroughputExceededException ex) {
+      return Status.ERROR;
     } catch (AmazonServiceException ex) {
       LOGGER.error(ex);
       return Status.ERROR;
