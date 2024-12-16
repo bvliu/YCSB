@@ -205,7 +205,7 @@ public class GoogleDatastoreClient extends DB {
       DatastoreOptions.Builder datastoreOptionsBuilder = DatastoreOptions
           .newBuilder()
           .setProjectId(projectId)
-          .setCredentials(credentials)
+          .setCredentials(credential)
           .setOpenTelemetryOptions(
               DatastoreOpenTelemetryOptions.newBuilder()
                   .setTracingEnabled(tracingEnabled)
